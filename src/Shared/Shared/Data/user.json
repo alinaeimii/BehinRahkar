@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "username": "user1",
+    "password": "780D79A177209A6DEDA0C6E9DA83FA2B8C7E27FBBFA7777FB4FD9DF924006FB3:454BA71467E71B546FEDB4CBF3161F9D",
+    "role": "User",
+    "services": [
+      "IS"
+    ]
+  },
+  {
+    "id": 1,
+    "username": "admin1",
+    "password": "F080DCE13CB0C3DDB64B02681AB8F4F37DCEAD984272E3D42D073A663E2F9C0F:C31447C0490D10819386455EECC69CDA",
+    "role": "Admin",
+    "services": [
+      "IS",
+      "PD"
+    ]
+  }
+]
+

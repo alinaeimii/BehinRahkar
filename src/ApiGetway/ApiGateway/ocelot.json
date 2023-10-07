@@ -1,0 +1,100 @@
+{
+  "Routes": [
+
+    //Identity API
+    {
+      "DownstreamPathTemplate": "/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identityapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/token",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "Identity.API"
+    },
+    {
+      "DownstreamPathTemplate": "/revoke",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identityapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/revoke",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "Identity.API"
+    },
+
+    //Product API
+    {
+      "DownstreamPathTemplate": "/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "productapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/product",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Admin",
+        "Service": [ "PD" ]
+      },
+      "SwaggerKey": "Product.API"
+    },
+    {
+      "DownstreamPathTemplate": "/products",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "productapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/products",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Service": [ "PD" ]
+      },
+      "SwaggerKey": "Product.API"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "Identity.API",
+      "Config": [
+        {
+          "Name": "Identity.API",
+          "Version": "v1",
+          "Url": "http://identityapi/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Product.API",
+      "Config": [
+        {
+          "Name": "Product.API",
+          "Version": "v1",
+          "Url": "http://productapi/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://apigetway"
+  }
+}
